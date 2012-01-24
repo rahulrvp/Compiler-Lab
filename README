@@ -1,0 +1,10 @@
+Compiler Lab Solutions
+----------------------
+
+You can get the both '.l' and '.y' files from the corresponding directories of repos.
+To run them, all you need to do is to type the following commands in the terminal.
+(assuming that you have installed both 'flex' and 'bison' in your comp.)
+
+bison -d filename.y
+flex filename.l
+gcc lex.yy.c filename.tab.c -ll
