@@ -29,7 +29,6 @@
 	void preOrder(struct node*);
 	void inOrder(struct node*);
 	void postOrder(struct node*);
-	void evaluateExp(struct node*);
 %}
 
 %union {
@@ -136,22 +135,7 @@ void postOrder(struct node* root)
 	}
 }
 
-void evaluateExp(struct node* root)
+void evaluate(struct node* root)
 {
-	if(root==NULL) {
-		return;
-	}
-	else {
-		evaluateExp(root->left);
-		if(root->flag == 0) {
-		 switch(root->op) {
-			 case '+': root->val = (root->left->val)+(root->right->val); break;
-			 case '-': root->val = (root->left->val)-(root->right->val); break;
-			 case '*': root->val = (root->left->val)*(root->right->val); break;
-			 case '/': root->val = (root->left->val)/(root->right->val); break;
-			 default:break;
-			}
-		}
-	evaluateExp(root->right);
-	}
+	printf ("Not done..!!");
 }
