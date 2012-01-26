@@ -10,7 +10,6 @@
 	void preOrder(struct node*);
 	void inOrder(struct node*);
 	void postOrder(struct node*);
-	void evaluateExp(struct node*);
 %}
 
 %union {
@@ -28,8 +27,7 @@
 %%
 	T: E'\n'{printf ("\nPre-order : "); preOrder($1);
 			 printf ("\nIn-order : "); inOrder($1);
-			 printf ("\nPost-order : "); postOrder($1);
-			 evaluateExp($1); printf ("\nEvaluation result : %d",$1->val);}
+			 printf ("\nPost-order : "); postOrder($1);}
 				;
 	E: NUM { $$ = $1; }
 	 | E ADD E { $$ = $2;
@@ -104,25 +102,5 @@ void postOrder(struct node* root)
 			case 1 : printf(" %d",root->val);
 						break;
 		}
-	}
-}
-
-void evaluateExp(struct node* root)
-{
-	if(root==NULL) {
-		return;
-	}
-	else {
-		evaluateExp(root->left);
-		if(root->flag == 0) {
-		 switch(root->op) {
-			 case '+': root->val = (root->left->val)+(root->right->val); break;
-			 case '-': root->val = (root->left->val)-(root->right->val); break;
-			 case '*': root->val = (root->left->val)*(root->right->val); break;
-			 case '/': root->val = (root->left->val)/(root->right->val); break;
-			 default:break;
-			}
-		}
-	evaluateExp(root->right);
 	}
 }
